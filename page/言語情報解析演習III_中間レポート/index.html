@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>言語情報解析演習III_中間レポート</title>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="icon" href="../../assets/syobon.jpeg" />
+  </head>
+  <body>
+    <h3 id="title">言語情報解析演習III_中間レポート</h3>
+    <div class="main">
+      <h3>< 文書要約の変遷 ></h3>
+      <ul>
+        <li id="2000-2014">
+          <h4><u>2000以前 - 2014</u></h4>
+          <ul>
+            <li>
+              ニューラル言語モデルが登場しておらず、様々な角度からのアプローチが試された。<br />
+              e.g.
+              <ul>
+                <li>
+                  <b>木構造で表した文において重要な構造だけを圧縮する手法</b>
+                  <span class="ref">[Knight and Marcu, AAAI-2000]</span>
+                </li>
+                <li>
+                  <b>
+                    グラフ構造で表したテキストの関係をもとに要約する手法
+                    (TextRank)
+                  </b>
+                  <span class="ref">[Mihalcea and Tarau, EMNLP-2004]</span>
+                  <img src="assets/textrank.png" alt="" />
+                </li>
+                <li>
+                  <b>トピックベースのアプローチ</b>
+                  <span class="ref">[Ozsoy el al., 2011]</span>
+                </li>
+              </ul>
+            </li>
+            <li>
+              タスクの基礎が固まっておらず、解きたい問題や評価方法についての試行錯誤が繰り返された
+              (ROUGE <span class="ref">[Lin, ACL-2004]</span> の登場もこの頃)。
+            </li>
+          </ul>
+        </li>
+        <br />
+
+        <li id="2015">
+          <h4><u>2015</u></h4>
+          <ul>
+            <li>
+              抽出型要約 (入力文書から重要な文字列 (文) を抜き出すアプローチ)
+              に代わり、<b>抽象型要約</b>が登場。
+            </li>
+            <li>
+              ニューラル言語モデル (とりわけ Encoder-Decoder モデル
+              <span class="ref">[Sutskever et al., NIPS-2014]</span>)
+              の登場により、入力側にない情報を出力することが可能となる。<br />
+              → 抽象型要約の登場につながる。
+            </li>
+            <li>
+              Attention-Based Sequence-to-Sequence
+              <span class="ref">[Baudanau et al., ICLR-2015]</span>
+              をもとにして作られたニューラル要約モデル
+              <span class="ref">[Rush et al., EMNLP-2015]</span>
+              は、ROUGE
+              スコアにおいて既存のあらゆる手法を上回る結果を叩き出した。<!-- TODO: 原論文要参照 -->
+              <img src="assets/rushetal1.png" alt="" />
+            </li>
+          </ul>
+          <ul class="horizontal">
+            <li>
+              <img src="assets/rushetal2.png" alt="" />
+            </li>
+            <li>
+              <img src="assets/rushetal3.png" alt="" />
+            </li>
+          </ul>
+        </li>
+        <br />
+
+        <li id="2016-2018">
+          <h4><u>2016 - 2018</u></h4>
+          <ul>
+            <li>
+              抽象型要約のみが持つ「抽出型要約にはない弱点」を克服するための取り組みが行われる。<br />
+              → 弱点: 不要な情報を多く生成してしまうこと。
+            </li>
+            <ul>
+              <li>軽度: 冗長な文を生成してしまう。</li>
+              <li>重度: 矛盾する情報を生成してしまう。</li>
+            </ul>
+            <li>
+              対策:
+              <span class="ref">[Suzuki and Nagata, 2016]</span>
+              や Pointer-Generator Networks
+              <span class="ref">[See et al., ACL-2017]</span>
+              によって、入力文書の単語をそのまま要約として出力する等の工夫がなされる。
+              <img src="assets/pointer-generator-model.png" alt="" />
+            </li>
+            <li>
+              その他、Attention
+              の当て方についての議論が行われたり、複雑なネットワークを構築するタイプの論文が多く採択されたりするなどした。<br />
+              →
+              <b>モデルの複雑化が進む。</b>
+            </li>
+          </ul>
+        </li>
+        <br />
+
+        <li id="2019">
+          <h4><u>2019</u></h4>
+          <ul>
+            <li>
+              BERT
+              <span class="ref">[Devlin et al., NAACL-2019]</span>
+              の登場により、抽出型要約が再び流行する。
+              <img src="assets/bert.png" alt="" />
+            </li>
+            <li>
+              「抽出型要約 = 文の二値分類 (重要 / 重要でない)
+              タスク」として捉えることができる。<br />
+              → Fine-tuning
+              によって分類タスクに適応させることでシンプルに実装可能。<br />
+              e.g.
+              <ul>
+                <li>
+                  <b>HIBERT</b>
+                  <span class="ref">[Zhang et al., ACL-2019]</span>
+                </li>
+                <li>
+                  <b>BERTSum</b>
+                  <span class="ref">[Liu and Lapata., EMNLP-2019]</span>
+                </li>
+              </ul>
+            </li>
+            <li>
+              その他、複数の文書を入力文書とする抽出型要約モデルが提案されたり、クエリフォーカス要約にも
+              BERT が用いられたりするなど、BERT
+              の汎用性を活かした様々なアプローチがなされた。
+            </li>
+          </ul>
+        </li>
+        <br />
+
+        <li id="2020">
+          <h4><u>2020</u></h4>
+          <ul>
+            <li>
+              BERT よりも優れた事前学習済みモデルの作成を試みるのが近年の流れ。
+            </li>
+            <li>
+              汎用言語モデルのみならず、要約に特化したモデルにもフォーカスがあたる。<br />
+              e.g.
+              <ul>
+                <li>
+                  従来よりも少ないデータで SOTA を達成した PEGASUS
+                  <span class="ref">[Zhang et al., ICML-2020]</span>
+                </li>
+                <li>
+                  未来の系列を訓練する ProphetNet
+                  <span class="ref">[Yan et al., EMNLP-2020]</span>
+                </li>
+                <li>
+                  デコード時の露出バイアス (Exposure Bias) に取り組んだERNIE-GEN
+                  <span class="ref">[Xiao et al., 2020]</span>
+                </li>
+                ↑ これらは BART
+                <span class="ref">[Lewis et al., ACL-2020]</span>
+                からインスピレーションを受ける。
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
