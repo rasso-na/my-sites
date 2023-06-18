@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <title>お店リストapp</title>
@@ -9,8 +9,21 @@
   </head>
   <body>
     <h4>行きたいお店記録うぉぉぉぉぉぉ</h4>
-    <button id="reload">リストを更新する</button>
-    <div id="store-list"><p>hello</p></div>
-    <script src="js/oi4.js" async></script>
+    <div id="store-list">store-list</div>
+    <!-- <div id="add-edit-form">add-edit-form</div> -->
+    <!-- <button id="reload">更新</button> -->
+    <!-- <button id="edit">編集</button> -->
+    <button type="button" id="edit-list">編集</button>
+    <hr />
+    <form>
+      <p>新しいお店を追加</p>
+      <p><input type="text" id="name" placeholder="店名" /></p>
+      <p><input type="url" id="url" placeholder="リンク" /></p>
+      <p><input type="text" id="where" placeholder="住所" /></p>
+      <p><input type="text" id="comment" placeholder="ひとこと" /></p>
+      <p><input type="checkbox" id="visited" />もう行った</p>
+      <input type="button" value="追加" id="add" />
+    </form>
+    <script src="js/oi4.js" type="module"></script>
   </body>
 </html>
