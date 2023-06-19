@@ -108,6 +108,7 @@ function editListHtml(storeDataMap) {
   `;
   // console.log(innerHTML);
   storeList.innerHTML = innerHTML;
+  console.log(innerHTML);
 
   // editButtonList = document.querySelectorAll(".edit");
   deleteButtonList = document.querySelectorAll(".delete");
