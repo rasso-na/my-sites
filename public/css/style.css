@@ -557,3 +557,9 @@ dialog::backdrop {
 .no-dot * {
   list-style: none;
 }
+.align-right {
+  text-align: right;
+}
+.align-center {
+  text-align: center;
+}
