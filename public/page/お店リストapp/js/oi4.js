@@ -70,36 +70,42 @@ function editListHtml(storeDataMap) {
       notVisited =
         notVisited +
         `
+        <hr style="border-style: dotted;">
         <li>
           ${storeNameTag}
-          <!-- <button type="button" id="${id}" class="edit">編集</button> -->
-          <button type="button" id="${id}" class="delete" style="display: none;">削除</button>
-          <button type="button" id="${id}" class="visited" style="display: none;">もう行った</button>
           <ul class="no-dot">
             <li>${storeData["where"]}</li>
             <li>${storeData["comment"]}</li>
           </ul>
+          <!-- <button type="button" id="${id}" class="edit">編集</button> -->
+          <button type="button" id="${id}" class="delete" style="display: none;">削除</button>
+          <button type="button" id="${id}" class="visited" style="display: none;">もう行った</button>
         </li>
       `;
     } else {
       visited =
         visited +
         `
+        <hr style="border-style: dotted;">
         <li>
           ${storeNameTag}
-          <!-- <button type="button" id="${id}" class="edit">編集</button> -->
-          <button type="button" id="${id}" class="delete" style="display: none;">削除</button>
-          <button type="button" id="${id}" class="not-visited" style="display: none;">まだ行ってない</button>
           <ul class="no-dot">
             <li>${storeData["where"]}</li>
             <li>${storeData["comment"]}</li>
           </ul>
+          <!-- <button type="button" id="${id}" class="edit">編集</button> -->
+          <button type="button" id="${id}" class="delete" style="display: none;">削除</button>
+          <button type="button" id="${id}" class="not-visited" style="display: none;">まだ行ってない</button>
         </li>
       `;
     }
   }
-  const innerHTML = `<p>まだ行ってない</p><ul id="not-visited">${notVisited}</ul>
-  <p>もう行った</p><ul id="visited">${visited}</ul>`;
+  const innerHTML = `
+  <hr />
+  <p>まだ行ってない</p><ul id="not-visited">${notVisited}</ul>
+  <hr />
+  <p>もう行った</p><ul id="visited">${visited}</ul>
+  `;
   // console.log(innerHTML);
   storeList.innerHTML = innerHTML;
 
