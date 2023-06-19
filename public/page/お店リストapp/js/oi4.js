@@ -232,7 +232,7 @@ addButton.addEventListener("click", () => {
   // if (comment == "") {
   //   notFilled.push("「ひとこと」");
   // }
-  console.log(visited);
+  // console.log(visited);
   if (notFilled.length != 0) {
     alert(`${notFilled.join("")}が入力されていません。`);
   } else {
