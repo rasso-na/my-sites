@@ -70,7 +70,7 @@ function editListHtml(storeDataMap) {
       notVisited =
         notVisited +
         `
-        <hr style="border-style: dotted;">
+        <hr style="border-style: dotted;" />
         <li>
           ${storeNameTag}
           <ul class="no-dot">
@@ -86,7 +86,7 @@ function editListHtml(storeDataMap) {
       visited =
         visited +
         `
-        <hr style="border-style: dotted;">
+        <hr style="border-style: dotted;" />
         <li>
           ${storeNameTag}
           <ul class="no-dot">
